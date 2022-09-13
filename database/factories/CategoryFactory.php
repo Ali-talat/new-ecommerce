@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
             'name' => $this->faker->word(),
             'slug' => $this->faker->slug(),
             'is_active' => $this->faker->boolean(),
-            'parent_id' => $this->faker->numberBetween(2,9),
+            'parent_id' => \null,
         ];
     }
 }

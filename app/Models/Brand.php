@@ -6,7 +6,7 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Brand extends Model
 {
     use HasFactory;
 
@@ -22,24 +22,20 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['parent_id', 'slug', 'is_active'];
+    protected $fillable = ['photo','is_active'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
-        'is_active' => 'boolean',
+        'active' => 'boolean',
     ];
 
     public function getActive(){
-        return $this -> is_active == 0 ? 'غير مفعل' : 'مفعل' ;
+        return $this->is_active == 0 ? 'غير مفعل' : 'مفعل' ;
     }
 
-    public function _parent()
+    public function getPhotoAttribute($value)
     {
-        return $this->belongsTo(self::class, 'parent_id');
+        return $value !== null ? asset('assets/images/brands/'.$value) : '';
     }
+
 
 }

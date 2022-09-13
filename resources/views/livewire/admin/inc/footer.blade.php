@@ -102,7 +102,7 @@
         meridians: true,setCurrentTime: false
     });
 </script>
-@yield('script')
+@stack('script')
 
 </body>
 </html>

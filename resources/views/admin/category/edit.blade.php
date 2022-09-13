@@ -38,8 +38,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            @include('admin.inc.success')
-                            @include('admin.inc.errors')
+                            @include('livewire.admin.inc.success')
+                            @include('livewire.admin.inc.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form class="form"
@@ -88,6 +88,35 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1"> القسم الرئيسي
+                                                        </label>
+                                                        <br>
+                                                        <select name="parent_id" style="width: 200px" class="select2 form-control">
+                                                            <optgroup label="من فضلك أختر القسم ">
+                                                                    @foreach($mainCats as $mainCat)
+                                                                        <option
+                                                                            value="{{$mainCat->id }}" 
+                                                                            @if ($category ->parent_id == $mainCat ->id)
+                                                                                            selected
+                                                                            @endif
+                                                                            >
+                                                                            {{$mainCat ->name}}
+                                                                            
+                                                                        </option>
+                                                                    @endforeach
+                                                            </optgroup>
+                                                        </select>
+                                                        @error('parent_id')
+                                                        <span class="text-danger"> {{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                        
+                                        
+                                            
+                                                
 
                                                 
 
@@ -100,14 +129,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group mt-1">
                                                         <input type="checkbox" value="1"
-                                                               name="active"
+                                                               name="is_active"
                                                                id="switcheryColor4"
                                                                class="switchery" data-color="success"
-                                                               @if($category -> active == 1)checked @endif/>
+                                                               @if($category ->is_active == 1)checked @endif/>
                                                         <label for="switcheryColor4"
                                                                class="card-title ml-1">الحالة  </label>
 
-                                                        @error("active")
+                                                        @error("is_active")
                                                         <span class="text-danger">{{$message }}</span>
                                                         @enderror
                                                     </div>

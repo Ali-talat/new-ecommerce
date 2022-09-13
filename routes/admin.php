@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\BrandsController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\Auth\AuthenticatedSessionControllerAdmin;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AdminLogin;
@@ -83,6 +85,40 @@ Route::group(
 
             });
              ###################### end categorys route ##########
+
+
+              ###################### start brands route ################################
+
+            Route::group(['prefix'=>'brands'],function(){
+                
+                Route::get('/',[BrandsController::class,'index'])->name('brand.index');
+                Route::get('/create',[BrandsController::class,'create'])->name('brand.create');
+                Route::post('/store',[BrandsController::class,'store'])->name('brand.store');
+                Route::get('/edit/{id}',[BrandsController::class,'edit'])->name('brand.edit');
+                Route::post('/update/{id}',[BrandsController::class,'update'])->name('brand.update');
+                Route::get('/delete/{id}',[BrandsController::class,'delete'])->name('brand.delete');
+
+
+            });
+             ###################### end brands route ##################################
+
+
+             ###################### start tags route ################################
+
+            Route::group(['prefix'=>'tag'],function(){
+                
+                Route::get('/',[TagController::class,'index'])->name('tag.index');
+                Route::get('/create',[TagController::class,'create'])->name('tag.create');
+                Route::post('/store',[TagController::class,'store'])->name('tag.store');
+                Route::get('/edit/{id}',[TagController::class,'edit'])->name('tag.edit');
+                Route::post('/update/{id}',[TagController::class,'update'])->name('tag.update');
+                Route::get('/delete/{id}',[TagController::class,'delete'])->name('tag.delete');
+
+
+            });
+             ###################### end tags route ##################################
+
+
 
 
         });

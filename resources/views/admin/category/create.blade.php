@@ -79,7 +79,7 @@
                                                         <input type="text" id="name"
                                                                class="form-control"
                                                                placeholder="  "
-                                                               value=""
+                                                               value="{{old('name')}}"
                                                                name="name">
                                                         @error("name")
                                                         <span class="text-danger">{{$message}}</span>
@@ -121,13 +121,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group mt-1">
                                                         <input type="checkbox" value="1"
-                                                               name="active"
+                                                               name="is_active"
                                                                id="switcheryColor4"
                                                                class="switchery" data-color="success"/>
                                                         <label for="switcheryColor4"
                                                                class="card-title ml-1">الحالة  </label>
 
-                                                        @error("active")
+                                                        @error("is_active")
                                                         <span class="text-danger">{{$message }}</span>
                                                         @enderror
                                                     </div>
@@ -207,11 +207,10 @@
         </div>
     </div>
 </div>
-<x-admin-home>
-
-@section('script')
+@push('script')
 
 <script>
+    
     $('._radio').click(
         function(){
             if (this.checked && this.value == '2') {  // 1 if main cat - 2 if sub cat
@@ -222,4 +221,5 @@
         });
 </script>
     
-@endsection
+@endpush
+</x-admin-home>

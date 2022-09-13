@@ -26,10 +26,10 @@ class CategoryController extends Controller
 
     public function store(categoryRequest $request){
 
-        if(!$request->has('active')){
-            $request->request->add(['active'=>0]);
+        if(!$request->has('is_active')){
+            $request->request->add(['is_active'=>0]);
         }else{
-            $request->request->add(['active'=>1]);
+            $request->request->add(['is_active'=>1]);
         }
         $slug = \explode(' ' ,$request->name);
         $slug = implode('-' , $slug);
@@ -54,7 +54,8 @@ class CategoryController extends Controller
     public function edit( $id){
 
         $category = Category::find($id);
-        return \view('admin.category.edit',\compact('category'));
+         $mainCats = Category::all();
+        return \view('admin.category.edit',\compact('category','mainCats'));
     }
 
 
@@ -70,10 +71,10 @@ class CategoryController extends Controller
         if (!$category)
             return redirect()->back()->with(['error' => 'هذا القسم غير موجود']);
 
-        if (!$request->has('active'))
-            $request->request->add(['active' => 0]);
+        if (!$request->has('is_active'))
+            $request->request->add(['is_active' => 0]);
         else
-            $request->request->add(['active' => 1]);
+            $request->request->add(['is_active' => 1]);
             
             DB::beginTransaction();
         
@@ -105,14 +106,14 @@ class CategoryController extends Controller
     public function delete($id){
 
         try{
+            $cat = Category::find($id);
+            if(!$cat){
+                return \redirect()->back()->with(['error'=>'هذا القسم غير موجود']);
 
-            $category = Category::find($id);
-    
-            if (!$category)
-                    return redirect()->route('category.index')->with(['error' => 'هذا القسم غير موجود ']);
-    
-            $category->delete();
-            return redirect()->route('category.index')->with(['success' => 'تم الحذف بنجاح']);
+            }
+            $cat ->delete();   
+            return \redirect()->back()->with(['success'=>'تم الحذف بنجاح']);
+
         }catch(Exception $ex){
             return redirect()->route('category.index')->with(['error' => 'حدث مشكله ما يرجي المحاوله لاحقا ']);
 
