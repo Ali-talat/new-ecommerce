@@ -5,6 +5,8 @@ namespace App\Models;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class Category extends Model
 {
@@ -42,4 +44,14 @@ class Category extends Model
         return $this->belongsTo(self::class, 'parent_id');
     }
 
+    public function products(){
+
+        return $this->belongsToMany(Product::class,'product_categories');
+    }
+
+    public function scopeActive($query){
+        return $query -> where('is_active',1) ;
+    }
+
+    
 }

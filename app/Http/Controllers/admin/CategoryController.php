@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Enums\CategoryType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\categoryRequest;
 use App\Models\Category;
@@ -35,10 +36,10 @@ class CategoryController extends Controller
         $slug = implode('-' , $slug);
         $request->request->add(['slug'=> $slug]);
         
-        // if($request->type == CategoryType::mainCat){
-        //     $request->request->add(['parent_id'=> null]);
+        if($request->type == CategoryType::Maincategory){
+            $request->request->add(['parent_id'=> null]);
 
-        // }
+        }
         
 
         $category= Category::create($request->except('_token'));

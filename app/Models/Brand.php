@@ -37,5 +37,13 @@ class Brand extends Model
         return $value !== null ? asset('assets/images/brands/'.$value) : '';
     }
 
+    public function products(){
+        return $this->hasMany(Product::class,'brand_id');
+    }
+
+    public function scopeActive($query){
+        return $query -> where('is_active',1) ;
+    }
+
 
 }

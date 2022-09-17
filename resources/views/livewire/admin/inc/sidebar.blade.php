@@ -44,10 +44,10 @@
                   class="badge badge badge-success badge-pill float-right mr-2"></span>
           </a>
               <ul class="menu-content">
-                  <li class="active"><a class="menu-item" href="}"
+                  <li class="active"><a class="menu-item" href="{{route('product.index')}}"
                                         data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                   </li>
-                  <li><a class="menu-item" href="" data-i18n="nav.dash.crypto"> اضافه منتج جديد </a>
+                  <li><a class="menu-item" href="{{route('product.create')}}" data-i18n="nav.dash.crypto"> اضافه منتج جديد </a>
                   </li>
               </ul>
           </li>
