@@ -1,5 +1,4 @@
-@extends('layouts.admin')
-@section('content')
+<x-admin-home>
 
 <div class="app-content content">
     <div class="content-wrapper">
@@ -39,8 +38,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            @include('admin.inc.success')
-                            @include('admin.inc.errors')
+                            @include('livewire.admin.inc.success')
+                            @include('livewire.admin.inc.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form class="form"
@@ -124,13 +123,7 @@
                                                 </div>
 
 
-                                                <div class="col-md-6 
-                                                @if ($product -> manage_stock == 0 )
-                                                    hidden
-                                                
-                                                @endif
-                                                
-                                                qtyDiv"   id="">
+                                                <div class="col-md-6 qtyDiv hidden" id="">
                                                     <div class="form-group">
                                                         <label for="projectinput1">الكمية
                                                         </label>
@@ -175,22 +168,24 @@
     </div>
 </div>
 
-@stop
 
-@section('script')
-    <script>
+@push('script')
+<script>
 
         
-        $("#manageStock").change(function(){
+    $("#manageStock").change(function(){
 
-            if(this.value == 1){
-                $('.qtyDiv').removeClass('hidden')
-            }else{
-                $('.qtyDiv').addClass('hidden')
+        if(this.value == 1){
+            $('.qtyDiv').removeClass('hidden')
+        }else{
+            $('.qtyDiv').addClass('hidden')
 
-            }
-            
-        });
+        }
         
-    </script>
-@endsection
+    });
+    
+</script>
+@endpush
+    
+
+</x-admin-home>

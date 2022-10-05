@@ -80,12 +80,18 @@
 							<ul>
 								
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<span
+                      class="user-name text-bold-700">  {{LaravelLocalization::getCurrentLocaleNative()}}
+                  </span>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="assets/images/lang-hun.png" alt="lang-hun"></span>Hungary</a></li>
-										<li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="assets/images/lang-ger.png" alt="lang-ger" ></span>German</a></li>
-										<li class="menu-item" ><a title="french" href="#"><span class="img label-before"><img src="assets/images/lang-fra.png" alt="lang-fre"></span>French</a></li>
-										<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="assets/images/lang-can.png" alt="lang-can"></span>Canada</a></li>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                  <li>
+                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
+                </li>
+                @endforeach
+										
 									</ul>
 								</li>
                 @guest
@@ -95,7 +101,7 @@
 								@endguest
 
 								@auth
-                  @if(Auth::user())
+                 
                     <li class="menu-item" ><a title="logout" href="{{route('logout')}}">Logout</a></li>
                     <li class="menu-item menu-item-has-children parent" >
                       <a title="Dollar (USD)" href="#"> {{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -106,18 +112,7 @@
                         
                       </ul>
                     </li>
-                  @elseif(Auth::guard('web')->check())
-                  <li class="menu-item" ><a title="logout" href="{{route('logout')}}">Logout</a></li>
-                  <li class="menu-item menu-item-has-children parent" >
-                    <a title="Dollar (USD)" href="#">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                    <ul class="submenu curency" >
-                      <li class="menu-item" >
-                        <a title="Pound (GBP)" href="#">Dashboard</a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                  @endif
+                  
 									
 								@endauth
 								

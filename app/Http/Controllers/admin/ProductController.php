@@ -4,8 +4,12 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GeneralProductRequest;
+use App\Http\Requests\ProductImageRequest;
+use App\Http\Requests\productPriceRequest;
+use App\Http\Requests\productStockRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Tag;
 use Exception;
@@ -34,10 +38,10 @@ class ProductController extends Controller
         try{
             DB::beginTransaction();
 
-            if(!$request->has('active')){
-                $request->request->add(['active'=>0]);
+            if(!$request->has('is_active')){
+                $request->request->add(['is_active'=>0]);
             }else{
-                $request->request->add(['active'=>1]);
+                $request->request->add(['is_active'=>1]);
             }
             $slug = \explode(' ' ,$request->name);
             $slug = implode('-' , $slug);
@@ -106,9 +110,10 @@ class ProductController extends Controller
     }
 
     public function createimage($id){
-        $imgs = Image::where('imageable_id',$id)->get();
         
-        return \view('admin.product.image.create',\compact(['id','imgs']));
+        $imgs = Image::where('product_id',$id)->get(); 
+        
+        return \view('admin.product.image.create',\compact(['imgs','id']));
     }
 
     public function saveImage (Request $request , $id){
@@ -124,13 +129,12 @@ class ProductController extends Controller
     }
 
 
-    public function storeImage (ProductImageRequest $request , $id){
+    public function storeImage (Request $request , $id){
         if($request->has('documents') ){
             foreach($request->documents as $img){
                 Image::create([
-                    'imageable_id'=> $id ,
-                    'imageable_type'=> 'App/Models/Product' ,
-                    'img'=> $img,
+                    'product_id'=> $id ,
+                    'photo'=> $img,
                 ]);
             }
             return redirect()->route('product.index')->with(['success' => 'تم التحديث  بنجاح']);

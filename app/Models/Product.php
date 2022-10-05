@@ -74,4 +74,15 @@ class Product extends Model
     }
 
     
+     
+    public function options()
+    {
+        return $this->hasMany(Option::class, 'product_id');
+    }
+
+    public function scopeActive($query){
+        return $query -> where('is_active',1) ;
+    }
+
+    
 }

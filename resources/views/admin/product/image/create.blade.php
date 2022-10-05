@@ -1,5 +1,4 @@
-@extends('layouts.admin')
-@section('content')
+<x-admin-home>
 
 <div class="app-content content">
     <div class="content-wrapper">
@@ -39,14 +38,15 @@
                                     </ul>
                                 </div>
                             </div>
-                            @include('admin.inc.success')
-                            @include('admin.inc.errors')
+                            @include('livewire.admin.inc.success')
+                            @include('livewire.admin.inc.errors')
 
                             
                                 <div class="form-group">
                                     <div class="text-center">
                                         @foreach ($imgs as $img)
-                                            <img src="{{asset('assets/images/products/'.$img->img)}}" style="height: 100px" class="rounded-circle" alt="">
+                                            <img src="{{$img->photo}}" style="height: 100px" class="rounded-circle" alt="">
+                                            
                                         @endforeach
                                     </div>
                                 </div>
@@ -100,9 +100,9 @@
     </div>
 </div>
 
-@stop
 
-@section('script')
+
+@push('script')
 
 <script>
     var uploadedDocumentMap = {}
@@ -124,10 +124,10 @@
                "{{ csrf_token() }}"
        }
        ,
-       url: "{{ route('product.image.save' ,$id) }}", // Set the url
+       url: "{{route('product.image.save',$id) }}", // Set the url
        success:
            function (file, response) {
-               $('form').append('<input type="hidden" name="documents[]" value="' + response.name + '">')
+               $('.form').append('<input type="hidden" name="documents[]" value="' + response.name + '">')
                uploadedDocumentMap[file.name] = response.name
            }
        ,
@@ -139,7 +139,7 @@
            } else {
                name = uploadedDocumentMap[file.name]
            }
-           $('form').find('input[name="documents[]"][value="' + name + '"]').remove()
+           $('.form').find('input[name="documents[]"][value="' + name + '"]').remove()
        }
        ,
        // previewsContainer: "#dpz-btn-select-files", // Define the container to display the previews
@@ -151,10 +151,12 @@
                var file = files[i]
                this.options.addedfile.call(this, file)
                file.previewElement.classList.add('dz-complete')
-               $('form').append('<input type="hidden" name="documents[]" value="' + file.file_name + '">')
+               $('.form').append('<input type="hidden" name="documents[]" value="' + file.file_name + '">')
            }
            @endif
        }
    }
 </script>
-@stop
+@endpush
+
+</x-admin-home>

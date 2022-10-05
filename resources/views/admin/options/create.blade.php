@@ -1,6 +1,4 @@
-
-@extends('layouts.admin')
-@section('content')
+<x-admin-home>
 
     <div class="app-content content">
         <div class="content-wrapper">
@@ -11,9 +9,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="">  قيم الخصائص </a>
+                                <li class="breadcrumb-item"><a href="{{route('option.index')}}"> options </a>
                                 </li>
-                                <li class="breadcrumb-item active">  أضافه قيم جديده
+                                <li class="breadcrumb-item active"> add options
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> أضافه قيم الخصائص </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> add options </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -39,21 +37,21 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('admin.inc.success')
-                                @include('admin.inc.errors')
+                                @include('livewire.admin.inc.success')
+                                @include('livewire.admin.inc.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('product.option.store')}}"
+                                              action="{{route('option.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
 
-                                           
 
+                                            <input type="hidden" name="product_id" value="{{$product_id}}">
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات قيم الخصائص </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> options data </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -69,10 +67,11 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> السعر
-                                                                 </label>
+                                                            <label for="projectinput1"> ألسعر
+                                                            </label>
                                                             <input type="text" id="price"
                                                                    class="form-control"
                                                                    placeholder="  "
@@ -83,55 +82,31 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    
-
-
 
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> الخاصيه
-                                                                 </label>
-                                                                 <select name="attribute_id" class="select2 form-control" >
-                                                                    <optgroup label=" اختر الخاصيه  ">
-                                                                        @if($attributes && $attributes -> count() > 0)
-                                                                            @foreach($attributes as $attribute)
-                                                                                <option
-                                                                                    value="{{$attribute -> id }}">{{$attribute -> name}}</option>
-                                                                            @endforeach
-                                                                        @endif
-                                                                    </optgroup>
-                                                                </select>
-                                                            @error("attribute_id")
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> المنتج
-                                                                 </label>
-                                                                 <select name="product_id" class="select2 form-control" >
-                                                                    <optgroup label=" اختر المنتج  ">
-                                                                        @if($products && $products -> count() > 0)
-                                                                            @foreach($products as $product)
-                                                                                <option
-                                                                                    
-                                                                                    value="{{$product -> id }}" >{{$product -> name}}</option>
-                                                                            @endforeach
-                                                                        @endif
-                                                                    </optgroup>
-                                                                </select>
-                                                            @error("product_id")
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
                                                     
 
-
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> اختر خاصيه
+                                                            </label>
+                                                            <select name="attribute_id" class="select2 form-control" >
+                                                                <optgroup label="من فضلك أختر قيمه">
+                                                                    @if($attributes && $attributes -> count() > 0)
+                                                                        @foreach($attributes as $attribute)
+                                                                            <option
+                                                                                value="{{$attribute -> id }}">{{$attribute -> name}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('attribute_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
                                                 </div>
 
@@ -159,5 +134,4 @@
             </div>
         </div>
     </div>
-
-    @stop
+</x-admin-home>

@@ -1,6 +1,4 @@
-@extends('layouts.admin')
-@section('content')
-
+<x-admin-home>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -39,8 +37,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            @include('admin.inc.success')
-                            @include('admin.inc.errors')
+                            @include('livewire.admin.inc.success')
+                            @include('livewire.admin.inc.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form class="form"
@@ -92,8 +90,9 @@
                                                         </label>
                                                         <select name="special_price_type" class="select2 form-control" >
                                                             <optgroup label="من فضلك أختر النوع ">
-                                                                <option value="percent">precent</option>
-                                                                <option value="fixed">fixed</option>
+                                                                <option disabled selected>Select an option</option>
+                                                                <option  value="percent">precent</option>
+                                                                <option  value="fixed">fixed</option>
                                                             </optgroup>
                                                         </select>
                                                         @error('special_price_type')
@@ -167,4 +166,4 @@
     </div>
 </div>
 
-@stop
+</x-admin-home>

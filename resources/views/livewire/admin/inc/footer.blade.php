@@ -26,7 +26,7 @@
 
 <!-- BEGIN PAGE VENDOR JS-->
 <script src="{{asset('admin')}}/vendors/js/charts/chart.min.js" type="text/javascript"></script>
-<script src="{{asset('admin')}}/vendors/js/charts/echarts/echarts.js" type="text/javascript"></script>
+{{-- <script src="{{asset('admin')}}/vendors/js/charts/echarts/echarts.js" type="text/javascript"></script> --}}
 
 <script src="{{asset('admin')}}/vendors/js/extensions/datedropper.min.js" type="text/javascript"></script>
 <script src="{{asset('admin')}}/vendors/js/extensions/timedropper.min.js" type="text/javascript"></script>
@@ -34,6 +34,7 @@
 <script src="{{asset('admin')}}/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
 <script src="{{asset('admin')}}/js/scripts/pages/chat-application.js" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/extensions/dropzone.min.js')}}" type="text/javascript"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN MODERN JS-->
 <script src="{{asset('admin')}}/js/core/app-menu.js" type="text/javascript"></script>
@@ -53,6 +54,7 @@
 
 <script src="{{asset('admin')}}/js/scripts/modal/components-modal.js" type="text/javascript"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/95ou9l5e6t711w20hiboh5uu5q85knbiqd7bsx3libakff5u/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     $('#meridians1').timeDropper({
         meridians: true,
@@ -102,8 +104,8 @@
         meridians: true,setCurrentTime: false
     });
 </script>
+@livewireScripts
 @stack('script')
-
 </body>
 </html>
 

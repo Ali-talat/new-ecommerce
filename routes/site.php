@@ -33,10 +33,10 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ 
 
-        Route::get('/',[Homepage::class,'render'])->name('homepage');
-        Route::get('shop',[ShopComponent::class,'render'])->name('shop');
-        Route::get('checkout',[CheckoutComponent::class,'render'])->name('checkout');
-        Route::get('cart',[CartComponent::class,'render'])->name('cart');
+        Route::get('/',Homepage::class)->name('homepage');
+        Route::get('shop',ShopComponent::class)->name('shop');
+        Route::get('checkout',CheckoutComponent::class)->name('checkout');
+        Route::get('cart',CartComponent::class)->name('cart');
         Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('login', [AuthenticatedSessionController::class, 'store']);
     });

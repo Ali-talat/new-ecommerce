@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\AttributeController;
 use App\Http\Controllers\admin\BrandsController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SettingController;
@@ -9,6 +11,8 @@ use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\Auth\AuthenticatedSessionControllerAdmin;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AdminLogin;
+use App\Http\Livewire\Admin\Teste;
+use App\Http\Livewire\Test;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -149,6 +153,7 @@ Route::group(
                     Route::get('/edit/{id}',[OptionController::class,'edit'])->name('product.option.edit');
                     Route::post('/update/{id}',[OptionController::class,'update'])->name('product.option.update');
                     Route::get('/delete/{id}',[OptionController::class,'delete'])->name('product.option.delete');
+                    
     
     
                 });
@@ -156,6 +161,36 @@ Route::group(
 
             });
              ###################### end products route ##################################
+
+
+             ###################### start attribute route ##################################
+
+
+            Route::group(['prefix'=>'attribute'],function(){
+                
+                Route::get('/',[AttributeController::class,'index'])->name('attribute.index');
+                Route::get('/create',[AttributeController::class,'create'])->name('attribute.create');
+                Route::post('/store',[AttributeController::class,'store'])->name('attribute.store');
+                Route::get('/edit/{id}',[AttributeController::class,'edit'])->name('attribute.edit');
+                Route::post('/update/{id}',[AttributeController::class,'update'])->name('attribute.update');
+                Route::get('/delete/{id}',[AttributeController::class,'delete'])->name('attribute.delete');
+
+
+            });
+             ###################### end attribute route ##################################
+
+
+            Route::group(['prefix'=>'option'],function(){
+                
+                Route::get('/',[OptionController::class,'index'])->name('option.index');
+                Route::get('/create/{id}',[OptionController::class,'create'])->name('option.create');
+                Route::post('/store',[OptionController::class,'store'])->name('option.store');
+                Route::get('/edit/{id}',[OptionController::class,'edit'])->name('option.edit');
+                Route::post('/update/{id}',[OptionController::class,'update'])->name('option.update');
+                Route::get('/delete/{id}',[OptionController::class,'delete'])->name('option.delete');
+
+
+            });
 
 
 
