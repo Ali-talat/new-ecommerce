@@ -1,6 +1,6 @@
 
 
-<x-app-layout>
+
 
 
    
@@ -1031,4 +1031,3 @@
 	</main>
 
 
-</x-app-layout>

@@ -6,7 +6,7 @@
 
 			<div class="wrap-breadcrumb">
 				<ul>
-					<li wire:click="add" class="item-link">home</li>
+					<li  class="item-link">home </li>
 					<li class="item-link"><span>Digital & Electronics</span></li>
 				</ul>
 			</div>

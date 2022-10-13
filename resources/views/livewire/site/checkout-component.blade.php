@@ -1,4 +1,4 @@
-<x-app-layout>
+
 
     <main id="main" class="main-site">
 
@@ -251,4 +251,3 @@
 		</div><!--end container-->
 
 	</main>
-</x-app-layout>

@@ -52,6 +52,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/chosen.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/color-01.css')}}">
+  @yield('styles')
 	@livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -96,7 +97,7 @@
 								</li>
                 @guest
 									
-									<li class="menu-item" ><a title="Register or Login" href="/login">Login</a></li>
+									<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
 									<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Register</a></li>
 								@endguest
 
@@ -500,6 +501,7 @@
       <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
       <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
       <script src="{{asset('assets/js/functions.js')}}"></script>
+      @yield('script')
       @livewireScripts
       </body>
       </html>

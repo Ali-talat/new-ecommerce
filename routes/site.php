@@ -6,6 +6,7 @@ use App\Http\Livewire\Site\CartComponent;
 use App\Http\Livewire\Site\CheckoutComponent;
 use App\Http\Livewire\Site\Homepage;
 use App\Http\Livewire\Site\ShopComponent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -26,19 +27,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Route::get('home',[homeController::class,'index']);
 
-                
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ,'verified' ]
     ], function(){ 
 
         Route::get('/',Homepage::class)->name('homepage');
         Route::get('shop',ShopComponent::class)->name('shop');
         Route::get('checkout',CheckoutComponent::class)->name('checkout');
         Route::get('cart',CartComponent::class)->name('cart');
-        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
-        Route::post('login', [AuthenticatedSessionController::class, 'store']);
+        
     });
 
 

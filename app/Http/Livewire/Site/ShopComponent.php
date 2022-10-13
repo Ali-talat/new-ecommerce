@@ -7,9 +7,7 @@ use Livewire\Component;
 class ShopComponent extends Component
 {
 
-    public function add(){
-        return 'add' ;
-    }
+    
     public function render()
     {
      

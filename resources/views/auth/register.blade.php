@@ -1,59 +1,77 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-app-layout>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <!--main area-->
+<main id="main" class="main-site left-sidebar">
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <div class="container">
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+        <div class="wrap-breadcrumb">
+            <ul>
+                <li class="item-link"><a href="#" class="link">home</a></li>
+                <li class="item-link"><span>Register</span></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">							
+                <div class=" main-content-area">
+                    <div class="wrap-login-item ">
+                        <div class="register-form form-item ">
+                            <form class="form-stl" action="{{ route('register') }}"  method="POST" >
+                                @csrf
+                                <fieldset class="wrap-title">
+                                    <h3 class="form-title">Create an account</h3>
+                                    <h4 class="form-subtitle">Personal infomation</h4>
+                                </fieldset>									
+                                <fieldset class="wrap-input">
+                                    <label for="frm-reg-lname">Name*</label>
+                                    <input type="text" id="frm-reg-lname" name="name" {{old('name')}} placeholder="Last name*">
+                                    @error('name')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </fieldset>
+                                <fieldset class="wrap-input">
+                                    <label for="frm-reg-email"> Email*</label>
+                                    <input type="text" id="frm-reg-email" name="email" value="{{old('email')}}" placeholder="email ">
+                                    @error('email')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </fieldset>
+                                <fieldset class="wrap-functions ">
+                                    <label class="remember-field">
+                                        <input name="newletter" id="new-letter" value="forever" type="checkbox"><span>Sign Up for Newsletter</span>
+                                    </label>
+                                </fieldset>
+                                <fieldset class="wrap-title">
+                                    <h3 class="form-title">Login Information</h3>
+                                </fieldset>
+                                <fieldset class="wrap-input item-width-in-half left-item ">
+                                    <label for="frm-reg-pass">Password *</label>
+                                    <input type="password" id="frm-reg-pass" name="password" placeholder="Password">
+                                </fieldset>
+                                <fieldset class="wrap-input item-width-in-half ">
+                                    <label for="frm-reg-cfpass">Confirm Password *</label>
+                                    <input type="password" id="frm-reg-cfpass" name="password_confirmation" placeholder="Confirm Password">
+                                    @error('password')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </fieldset>
+                                <input type="submit" class="btn btn-sign" >
+                            </form>
+                        </div>											
+                    </div>
+                </div><!--end main products area-->		
             </div>
+        </div><!--end row-->
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+    </div><!--end container-->
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+</main>
+<!--main area-->
+</x-app-layout>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
