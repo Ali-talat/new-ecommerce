@@ -27,4 +27,7 @@ class Option extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
+
+    
+
 }

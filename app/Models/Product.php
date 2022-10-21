@@ -64,6 +64,11 @@ class Product extends Model
         return $this->belongsToMany(Category::class,'product_categories');
     }
 
+    public function wishlist(){
+
+        return $this->belongsToMany(User::class,'wishlists');
+    }
+
     public function tags(){
 
         return $this->belongsToMany(Tag::class,'product_tags');
@@ -82,6 +87,11 @@ class Product extends Model
 
     public function scopeActive($query){
         return $query -> where('is_active',1) ;
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'product_id');
     }
 
     

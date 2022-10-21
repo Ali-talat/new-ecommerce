@@ -53,5 +53,15 @@ class Category extends Model
         return $query -> where('is_active',1) ;
     }
 
+    public function scopeParent($query){
+        return $query -> whereNull('parent_id');
+    }
+
+   
+    public function childrens()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
     
 }

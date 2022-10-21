@@ -58,4 +58,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+   
+    public function wishlist(){
+
+        return $this->belongsToMany(Product::class,'wishlists');
+    }
+
+    public function inWishlist($productId){
+        return self::wishlist()->where('product_id',$productId)->exists();
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\sliderController;
 use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\Auth\AuthenticatedSessionControllerAdmin;
 use App\Http\Livewire\Admin\AdminDashboard;
@@ -192,6 +193,18 @@ Route::group(
 
             });
 
+            Route::group(['prefix'=>'slider'],function(){
+                
+                Route::get('/create/slider',[sliderController::class,'create'])->name('slider.create');
+                Route::post('/save/slider',[sliderController::class,'save'])->name('slider.save');
+                Route::post('/store/slider',[sliderController::class,'store'])->name('slider.store');
+
+
+
+            });
+
+
+            
 
 
 

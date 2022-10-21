@@ -141,20 +141,33 @@
 											<li class="level-0">All Category</li>
 											
 												
-													<li class="level-1">
-														<a href=""></a>
-													</li>
-													
-															<li class="level-2">
-																<a href=""></a>
-																
-															</li>
-															
+                      @isset($categories)
+                      @foreach ($categories as $category)
+                        <li class="level-1">
+                          <a href="{{route('category.slug',$category->slug)}}">{{$category->name}}</a>
+                        </li>
+                        @isset($category ->childrens)
+                          @foreach ($category ->childrens as $children)
+                            <li class="level-2">
+                              <a href="{{route('category.slug',$children->slug)}}">{{$children ->name}}</a>
+                              
+                            </li>
+                            
 
-													
-															<li class="level-2">
-																<a href=""></a>
-															</li>
+                        @isset($children ->childrens)
+                          @foreach ($children ->childrens as $children)
+                            <li class="level-3">
+                              <a href="{{route('category.slug',$children->slug)}}">{{$children ->name}}</a>
+                            </li>
+                            
+                          @endforeach
+                        @endisset
+                            
+                          @endforeach
+                        @endisset
+                        
+                      @endforeach
+                    @endisset
 														
 											
 										</ul>
@@ -165,7 +178,7 @@
 
 						<div class="wrap-icon right-section">
 							<div class="wrap-icon-section wishlist">
-								<a href="" class="link-direction">
+								<a href="{{route('index.wishlist')}}" class="link-direction">
 									<i class="fa fa-heart" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">0 item</span>
@@ -501,7 +514,8 @@
       <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
       <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
       <script src="{{asset('assets/js/functions.js')}}"></script>
-      @yield('script')
       @livewireScripts
+      @stack('script')
+
       </body>
       </html>

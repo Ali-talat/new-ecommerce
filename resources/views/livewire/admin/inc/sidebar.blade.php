@@ -142,7 +142,7 @@
                     
                 </ul>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="">صور الاسليدر</a>
+                    <li><a class="menu-item" href="{{route('slider.create')}}">صور الاسليدر</a>
                     </li>
                    
                     

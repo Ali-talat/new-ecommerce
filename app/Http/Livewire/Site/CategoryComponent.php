@@ -3,13 +3,11 @@
 namespace App\Http\Livewire\Site;
 
 use App\Models\Category;
-use App\Models\Slider;
 use Livewire\Component;
 
-class Homepage extends Component
+class CategoryComponent extends Component
 {
-    public $num = 2 ;
-
+    public $num = 5 ;
     public function productBySulg($slug){
         $data = [];
   
@@ -22,12 +20,18 @@ class Homepage extends Component
           return view('livewire.site.category-component',$data);
 
     }
-    
+
+    public function add(){
+
+        return \redirect()->route('homepage');
+
+    }
+
     public function render()
     {
-    
-       $sliders = Slider::get('photo');
-       
-        return view('livewire.site.homepage',\compact('sliders'));
+        
+        return view('livewire.site.category-component');
     }
+
+    
 }
