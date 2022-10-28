@@ -21,11 +21,7 @@ class CategoryComponent extends Component
 
     }
 
-    public function add(){
-
-        return \redirect()->route('homepage');
-
-    }
+    
 
     public function render()
     {

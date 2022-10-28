@@ -39,7 +39,7 @@ Route::group(
 
         Route::get('/',Homepage::class)->name('homepage');
         Route::get('shop',ShopComponent::class)->name('shop');
-        Route::get('checkout',CheckoutComponent::class)->name('checkout');
+        Route::get('checkout',CheckoutComponent::class)->name('checkout')->middleware('auth');
         Route::get('cart',CartComponent::class)->name('cart');
         Route::get('addToCart/{id}',[CartComponent::class ,'addtocart'])->name('add.to.cart');
         Route::get('category/{sulg}',[CategoryComponent::class ,'productBySulg'])->name('category.slug');

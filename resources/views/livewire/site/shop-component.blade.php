@@ -61,175 +61,24 @@
 					<div class="row">
 
 						<ul class="product-list grid-products equal-container">
-
+						@foreach ($products as $product)
+							
 							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
 								<div class="product product-style-3 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_20.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{$product->images[0]->photo ?? ''}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 									</div>
 									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
+										<a href="#" class="product-name"><span>{{$product->name}}</span></a>
+										<div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
+										<a href="{{route('add.to.cart',$product->id)}}" class="btn add-to-cart">Add To Cart</a>
 									</div>
 								</div>
 							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_22.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_10.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_01.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_21.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_15.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_17.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_05.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_07.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_02.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_09.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{asset('')}}assets/images/products/digital_06.jpg" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-										<div class="wrap-price"><span class="product-price">$250.00</span></div>
-										<a href="#" class="btn add-to-cart">Add To Cart</a>
-									</div>
-								</div>
-							</li>
+						@endforeach
+						
 
 						</ul>
 
@@ -253,12 +102,12 @@
 							<ul class="list-category">
 								@foreach ($category as $cat)
 								<li class="category-item has-child-cate">
-									<a href="#" class="cate-link">{{$cat->name}}</a>
+									<a href="{{route('category.slug',$cat->slug)}}" class="cate-link">{{$cat->name}}</a>
 									<span class="toggle-control">+</span>
 									<ul class="sub-cate">
 										@if ($cat->childrens)
 											@foreach ($cat->childrens as $cats)
-												<li class="category-item"><a href="#" class="cate-link">{{$cats->name}}</a></li>
+												<li class="category-item"><a href="{{route('category.slug',$cats->slug)}}" class="cate-link">{{$cats->name}}</a></li>
 											@endforeach
 										@endif
 										

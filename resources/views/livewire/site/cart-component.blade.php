@@ -10,7 +10,7 @@
 				</ul>
 			</div>
 			<div class=" main-content-area">
-
+			@if (Cart::count() > 0)
 				<div class="wrap-iten-in-cart">
 					<h3 class="box-title">Products Name</h3>
 					<ul class="products-cart">
@@ -55,7 +55,7 @@
 						<label class="checkbox-field">
 							<input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
 						</label>
-						<a class="btn btn-checkout" href="checkout.html">Check out</a>
+						<a class="btn btn-checkout" href="{{route('checkout')}}">Check out</a>
 						<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 					</div>
 					<div class="update-clear">
@@ -63,6 +63,14 @@
 						<a class="btn btn-update" href="#">Update Shopping Cart</a>
 					</div>
 				</div>
+			@else
+				<div class="text-center" style="padding: 30px">
+					<h1>your cart is empty!</h1>
+					<p>add to it now</p>
+					<a class="btn btn-success" href="{{route('shop')}}">shop now</a>
+				</div>
+			@endif
+				
 
 				<div class="wrap-show-advance-info-box style-1 box-in-site">
 					<h3 class="title-box">Most Viewed Products</h3>

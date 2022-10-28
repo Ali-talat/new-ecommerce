@@ -49,8 +49,22 @@ class CartComponent extends Component
 
         Cart::remove($rowId);
     }
+
+    public function setAmountForCheckout(){
+
+        \session()->put('checkout',[
+
+            'discount'=> 0 ,
+            'subtotal' => Cart::subtotal(),
+            'tax' => Cart::tax(),
+            'total'=> Cart::total()
+        ]);
+
+    }
+
     public function render()
     {
+        $this->setAmountForCheckout();
         return view('livewire.site.cart-component');
     }
 }
