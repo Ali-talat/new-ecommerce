@@ -53,7 +53,11 @@
                             <div class="wrap-social">
                                 <a class="link-socail" href="#"><img src="assets/images/social-list.png" alt=""></a>
                             </div>
-                            <div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
+                            <div class="wrap-price"><span class="product-price">{{$product->special_price ?? $product->price}}</span></div>
+                            @if($product ->special_price)
+                                <span
+                                class="text-decoration-line-through" style="text-decoration-line: line-through">{{$product ->price}}</span>
+							@endif
                             <div class="stock-info in-stock">
                                 <p class="availability">Availability: <b>{{$product->in_stock ? 'in stock' : 'out of stock'}}</b></p>
                             </div>

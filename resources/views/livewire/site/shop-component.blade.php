@@ -72,7 +72,11 @@
 									</div>
 									<div class="product-info">
 										<a href="#" class="product-name"><span>{{$product->name}}</span></a>
-										<div class="wrap-price"><span class="product-price">{{$product->price}}</span></div>
+										<div class="wrap-price"><span class="product-price">{{$product->special_price ?? $product->price}}</span></div>
+								@if($product ->special_price)
+									<span
+									class="text-decoration-line-through" style="text-decoration-line: line-through">{{$product ->price}}</span>
+								@endif
 										<a href="{{route('add.to.cart',$product->id)}}" class="btn add-to-cart">Add To Cart</a>
 									</div>
 								</div>

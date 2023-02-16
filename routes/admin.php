@@ -6,9 +6,12 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\RoleController;
+use App\Http\Controllers\admin\rulesController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\sliderController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\usersController;
 use App\Http\Controllers\Auth\AuthenticatedSessionControllerAdmin;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AdminLogin;
@@ -159,6 +162,9 @@ Route::group(
     
                 });
 
+                
+
+
 
             });
              ###################### end products route ##################################
@@ -199,6 +205,32 @@ Route::group(
                 Route::post('/save/slider',[sliderController::class,'save'])->name('slider.save');
                 Route::post('/store/slider',[sliderController::class,'store'])->name('slider.store');
 
+
+
+            });
+
+            Route::group(['prefix'=>'role'],function(){
+                
+                Route::get('/',[RoleController::class,'index'])->name('roles.index');
+                Route::get('/create',[RoleController::class,'create'])->name('role.create');
+                Route::post('/store',[RoleController::class,'store'])->name('role.store');
+                Route::get('/edit/{id}',[RoleController::class,'edit'])->name('role.edit');
+                Route::post('/update/{id}',[RoleController::class,'update'])->name('role.update');
+                Route::get('/delete/{id}',[RoleController::class,'delete'])->name('role.delete');
+                
+
+
+            });
+
+            Route::group(['prefix'=>'user'],function(){
+                
+                Route::get('/',[usersController::class,'index'])->name('users.index');
+                Route::get('/create',[usersController::class,'create'])->name('user.create');
+                Route::post('/store',[usersController::class,'store'])->name('user.store');
+                Route::get('/edit/{id}',[usersController::class,'edit'])->name('user.edit');
+                Route::post('/update/{id}',[usersController::class,'update'])->name('user.update');
+                Route::get('/delete/{id}',[usersController::class,'delete'])->name('user.delete');
+                
 
 
             });
