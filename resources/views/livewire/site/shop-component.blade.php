@@ -27,10 +27,8 @@
 						<div class="wrap-right">
 
 							<div class="sort-item orderby ">
-								<select name="orderby" class="use-chosen" >
-									<option value="menu_order" selected="selected">Default sorting</option>
-									<option value="popularity">Sort by popularity</option>
-									<option value="rating">Sort by average rating</option>
+								<select name="orderby" class="use-chosen" wire:model="sorting">
+									<option value="default" selected="selected">Default sorting</option>
 									<option value="date">Sort by newness</option>
 									<option value="price">Sort by price: low to high</option>
 									<option value="price-desc">Sort by price: high to low</option>
@@ -38,7 +36,7 @@
 							</div>
 
 							<div class="sort-item product-per-page">
-								<select name="post-per-page" class="use-chosen" >
+								<select name="post-per-page" class="use-chosen" wire:model="pagesize">
 									<option value="12" selected="selected">12 per page</option>
 									<option value="16">16 per page</option>
 									<option value="18">18 per page</option>
@@ -57,46 +55,76 @@
 						</div>
 
 					</div><!--end wrap shop control-->
-
+					
 					<div class="row">
 
-						<ul class="product-list grid-products equal-container">
-						@foreach ($products as $product)
+						<ul class="product-list grid-products equal-container ">
 							
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{$product->images[0]->photo ?? ''}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-										</a>
+						@isset($products)
+							
+							
+							@foreach ($products as $product)
+								
+								<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+									<div class="product product-style-3 equal-elem ">
+										<div class="product-thumnail ">
+											<a href="{{route('product.detail',$product->slug)}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+												<figure><img src="{{$product->images[0]->photo ?? ''}}" style="height: 150px"  alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											</a>
+										</div>
+										<div class="product-info ">
+											<a href="{{route('product.detail',$product->slug)}}" class="product-name"><span>{{$product->name}}</span></a>
+											<div class="wrap-price"><span class="product-price">{{$product->special_price ?? $product->price}}</span>
+									@if($product ->special_price)
+										<span
+										class="text-decoration-line-through" style="text-decoration-line: line-through">{{$product ->price}}</span>
 									</div>
-									<div class="product-info">
-										<a href="#" class="product-name"><span>{{$product->name}}</span></a>
-										<div class="wrap-price"><span class="product-price">{{$product->special_price ?? $product->price}}</span></div>
-								@if($product ->special_price)
-									<span
-									class="text-decoration-line-through" style="text-decoration-line: line-through">{{$product ->price}}</span>
-								@endif
-										<a href="{{route('add.to.cart',$product->id)}}" class="btn add-to-cart">Add To Cart</a>
+									@endif
+											<a href="{{route('add.to.cart',$product->id)}}" class="btn add-to-cart">Add To Cart</a>
+										</div>
 									</div>
-								</div>
-							</li>
-						@endforeach
+								</li>
+							@endforeach
+							<div class="wrap-pagination-info text-center m-20">
+								{{$products->links()}}
+								
+								{{-- <p class="result-count">Showing 1-8 of 12 result</p> --}}
+							</div>
+						@endisset	
+
+						@isset($catsSearch)
+							
+							
+							@foreach ($catsSearch as $catSearch)
+								
+								<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+									<div class="product product-style-3 equal-elem ">
+										<div class="product-thumnail ">
+											<a href="{{route('product.detail',$catSearch->slug)}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+												
+											</a>
+										</div>
+										<div class="product-info ">
+											<a href="{{route('product.detail',$catSearch->slug)}}" class="product-name"><span>{{$catSearch->name}}</span></a>
+											{{-- <div class="wrap-price"><span class="product-price">{{$product->special_price ?? $product->price}}</span> --}}
+									{{-- @if($product ->special_price)
+										<span
+										class="text-decoration-line-through" style="text-decoration-line: line-through">{{$product ->price}}</span>
+									</div>
+									@endif --}}
+											<a href="{{route('add.to.cart',$catSearch->id)}}" class="btn add-to-cart">Add To Cart</a>
+										</div>
+									</div>
+								</li>
+							@endforeach
+							<
+						@endisset		
 						
 
 						</ul>
 
 					</div>
-
-					<div class="wrap-pagination-info">
-						<ul class="page-numbers">
-							<li><span class="page-number-item current" >1</span></li>
-							<li><a class="page-number-item" href="#" >2</a></li>
-							<li><a class="page-number-item" href="#" >3</a></li>
-							<li><a class="page-number-item next-link" href="#" >Next</a></li>
-						</ul>
-						<p class="result-count">Showing 1-8 of 12 result</p>
-					</div>
+					
 				</div><!--end main products area-->
 
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
@@ -254,6 +282,9 @@
 			</div><!--end row-->
 
 		</div><!--end container-->
+
+
+
 
 	</main>
 

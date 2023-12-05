@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -12,6 +13,8 @@ class ViewServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    
+
     public function register()
     {
         \view()->composer('layouts.app',function($view){
@@ -24,6 +27,8 @@ class ViewServiceProvider extends ServiceProvider
             }])->get());
 
         });
+
+        
     }
 
     /**

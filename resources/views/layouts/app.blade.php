@@ -49,6 +49,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/flexslider.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/chosen.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/color-01.css')}}">
@@ -131,9 +132,7 @@
 
 						<div class="wrap-search center-section">
 							<div class="wrap-search-form">
-								<form action="#" id="form-search-top" name="form-search-top">
-									<input type="text" name="search" value="" placeholder="Search here...">
-									<button form="form-search-top" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+								@livewire('site.searching-component')
 									<div class="wrap-list-cate">
 										<input type="hidden" name="product-cate" value="0" id="product-cate">
 										<a href="#" class="link-control">All Category</a>
@@ -509,7 +508,7 @@
       <script src="{{asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
       <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
       <script src="{{asset('assets/js/jquery.flexslider.js')}}"></script>
-      <script src="{{asset('assets/js/chosen.jquery.min.js')}}"></script>
+      {{-- <script src="{{asset('assets/js/chosen.jquery.min.js')}}"></script> --}}
       <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
       <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
       <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>

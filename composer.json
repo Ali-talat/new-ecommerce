@@ -18,6 +18,7 @@
         "laravelcollective/html": "^6.3",
         "livewire/livewire": "^2.10",
         "mcamara/laravel-localization": "^1.7",
+        "spatie/image-optimizer": "^1.7",
         "spatie/laravel-enum": "^1.6",
         "spatie/laravel-permission": "^5.9",
         "stripe/stripe-php": "^9.9"
@@ -71,4 +72,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
+    
 }

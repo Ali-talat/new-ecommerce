@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedSessionControllerAdmin extends Controller
 {
@@ -43,6 +44,9 @@ class AuthenticatedSessionControllerAdmin extends Controller
      */
     public function logout()
     {
+       
+
+
         Auth::guard('admin')->logout();
 
         return redirect()->route('admin.login');

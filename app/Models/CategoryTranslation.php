@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryTranslation extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name','locale'];
     public $timestamps = false;
+
+    
 
 }

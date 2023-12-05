@@ -60,6 +60,7 @@
                     <div class="row">
 
                         <ul class="product-list grid-products equal-container">
+                            <h1>{{$category->name}}</h1>
                         @isset($products)
                                 @foreach ($products as $product)
                                     
@@ -67,7 +68,7 @@
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
                                         <a href="{{route('product.slug',$product ->slug)}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{$product ->images[0] ->photo ?? ''}}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                            <figure><img src="{{$product ->images[0] ->photo ?? ''}}" style="height: 150px" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">

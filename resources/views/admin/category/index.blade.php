@@ -46,7 +46,7 @@
                                             <thead class="">
                                             <tr>
                                                 <th>الاسم </th>
-                                                <th>اسم القسم </th>
+                                                <th>القسم الرئيسي</th>
                                                 <th>الحالة</th>
                                                 <th>صوره القسم</th>
                                                 <th>الإجراءات</th>
@@ -55,12 +55,18 @@
                                             <tbody>
 
                                             @isset($categories)
+
+                                            
+                                                
                                                 @foreach($categories as $category)
+                                                @if ($category->_locale->locale == $locale)
+                                                    
+                                                    
                                                     <tr>
                                                         <td>{{$category ->name}}</td>
                                                         <td>{{$category -> _parent->name ?? ''}}</td>
                                                         <td>{{$category -> getActive()}}</td>
-                                                        <td> <img style="width: 150px; height: 100px;" src=" "></td>
+                                                        <td><img width="150px" height="100px" src="{{$category ->photo}}" alt=""></td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
@@ -76,7 +82,9 @@
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    @endif
                                                 @endforeach
+
                                             @endisset
 
 

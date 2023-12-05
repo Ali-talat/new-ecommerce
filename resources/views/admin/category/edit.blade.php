@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <div class="text-center">
                                                 <img
-                                                    src=""
+                                                    src="{{$category ->photo}}"
                                                     class="rounded-circle  height-150" alt="صورة القسم  ">
                                             </div>
                                         </div>
@@ -95,11 +95,15 @@
                                                         <br>
                                                         <select name="parent_id" style="width: 200px" class="select2 form-control">
                                                             <optgroup label="من فضلك أختر القسم ">
+                                                    
+                                                                <option value="">لايوجد قسم رئيسي </option>
                                                                     @foreach($mainCats as $mainCat)
-                                                                        <option
+                                                                        <option 
                                                                             value="{{$mainCat->id }}" 
                                                                             @if ($category ->parent_id == $mainCat ->id)
                                                                                             selected
+
+                                                                            
                                                                             @endif
                                                                             >
                                                                             {{$mainCat ->name}}
@@ -113,14 +117,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                        
-                                        
-                                            
                                                 
-
-                                                
-
-
 
 
 
@@ -166,5 +163,21 @@
         </div>
     </div>
 </div>
+
+@push('script')
+
+<script>
+    
+    $('._radio').click(
+        function(){
+            if (this.checked && this.value == '2') {  // 1 if main cat - 2 if sub cat
+                $('#cats_list').removeClass('hidden');
+            }else{
+                $('#cats_list').addClass('hidden');
+            }
+        });
+</script>
+    
+@endpush
 
 </x-admin-home>

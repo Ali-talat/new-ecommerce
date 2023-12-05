@@ -24,7 +24,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['parent_id', 'slug', 'is_active'];
+    protected $fillable = ['parent_id', 'slug', 'is_active','photo'];
 
     /**
      * The attributes that should be cast to native types.
@@ -61,6 +61,19 @@ class Category extends Model
     public function childrens()
     {
         return $this->hasMany(self::class, 'parent_id');
+    }
+    public function getPhotoAttribute($value)
+    {
+        return $value !== null ? asset('assets/images/categories/'.$value) : '';
+    }
+    
+    
+
+
+    
+    public function _locale()
+    {
+        return $this->hasOne(CategoryTranslation::class, 'category_id');
     }
 
     

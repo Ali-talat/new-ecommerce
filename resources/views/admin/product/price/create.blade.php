@@ -67,12 +67,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" >
                                                     <div class="form-group">
                                                         <label for="projectinput1"> سعر خاص
                                                         </label>
                                                         <input type="number"
-                                                               class="form-control"
+                                                               class="form-control" id="special_price" 
                                                                placeholder="  "
                                                                value="{{old('special_price')}}"
                                                                name="special_price">
@@ -105,7 +105,7 @@
                                             </div>
 
 
-                                            <div class="row" >
+                                            <div class="row"  id="startEndPrice" style="display: none ">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> تاريخ البداية
@@ -152,6 +152,7 @@
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="la la-check-square-o"></i> تحديث
                                             </button>
+                                            
                                         </div>
                                     </form>
 
@@ -165,5 +166,21 @@
         </div>
     </div>
 </div>
+
+
+@push('script')
+<script>
+
+$(document).ready(function() {
+  $('#special_price').on('input', function() {
+    $('#startEndPrice').show();
+  });
+});
+
+</script>
+  
+@endpush
+
+
 
 </x-admin-home>

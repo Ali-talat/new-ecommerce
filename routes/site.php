@@ -5,8 +5,11 @@ use App\Http\Controllers\homeController;
 use App\Http\Livewire\Site\CartComponent;
 use App\Http\Livewire\Site\CategoryComponent;
 use App\Http\Livewire\Site\CheckoutComponent;
+use App\Http\Livewire\Site\DetailComponent;
 use App\Http\Livewire\Site\Homepage;
 use App\Http\Livewire\Site\ProductComponent;
+use App\Http\Livewire\Site\SearchComponent;
+use App\Http\Livewire\Site\SearchingComponent;
 use App\Http\Livewire\Site\ShopComponent;
 use App\Http\Livewire\Site\ThanckyouComponent;
 use App\Http\Livewire\Site\WishlistComponent;
@@ -53,11 +56,20 @@ Route::group(
         });
 
         Route::group(['prefix'=>'checkout' , 'middleware'=>'auth'],function(){
-            Route::get('/',CheckoutComponent::class)->name('checkout');
+            Route::get('/',CheckoutComponent::class,)->name('checkout');
             Route::get('thankyou',ThanckyouComponent::class)->name('thankyou');
             // Route::get('order_now',[CheckoutComponent::class,'checkout'])->name('order.now');
 
         });
+
+        Route::group(['prefix'=>'detail'],function(){
+            // Route::get('/{slug}',[DetailComponent::class,'productDetail'])->name('product.detail');
+            Route::get('/{slug}',DetailComponent::class)->name('product.detail');
+            
+            
+        });
+        Route::get('/search', [SearchingComponent::class,'search'])->name('search');
+        Route::get('/ss', [Homepage::class,'latestProduct'])->name('search');
         
 
 

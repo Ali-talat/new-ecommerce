@@ -6,16 +6,24 @@ use App\Enums\CategoryType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\categoryRequest;
 use App\Models\Category;
+use App\Models\CategoryTranslation;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::orderBy('id','DESC')->paginate(10);
-        return \view('admin.category.index',\compact('categories'));
+        
+        $locale = LaravelLocalization::getCurrentLocale() ;
+         $categories = Category::orderBy('id','DESC')->paginate(10);
+         return \view('admin.category.index',\compact('categories','locale'));
+         
+        
     }
 
     public function create(){
@@ -40,10 +48,16 @@ class CategoryController extends Controller
             $request->request->add(['parent_id'=> null]);
 
         }
+        $fileName = "";
+        if ($request->has('photo')) {
+
+            $fileName = uploadImage('categories', $request->photo);
+        }
         
 
         $category= Category::create($request->except('_token'));
         $category -> name = $request->name ;
+        $category->photo = $fileName;
         $category->save();
         return redirect()->route('category.index')->with(['success' => 'تم الحفظ بنجاح']);
 
@@ -55,13 +69,14 @@ class CategoryController extends Controller
     public function edit( $id){
 
         $category = Category::find($id);
-         $mainCats = Category::all();
+        $mainCats = Category::all();
         return \view('admin.category.edit',\compact('category','mainCats'));
     }
 
 
 
     public function update(categoryRequest $request , $id){
+
         
 
         try{
@@ -81,7 +96,17 @@ class CategoryController extends Controller
         
         $category->update($request->all());
         
-        
+        if ($request->has('photo')) {
+            $img = $category->photo;
+            $img= Str::after($img, 'categories/');
+            Storage::disk('categories')->delete($img);
+            $fileName = uploadImage('categories', $request->photo);
+            Category::where('id', $id)
+                ->update([
+                    'photo' => $fileName,
+                ]);
+            
+        }
         //save translations
 
         $category->name = $request->name ;

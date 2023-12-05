@@ -25,8 +25,8 @@ class categoryRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'photo'=>'required',
-            'type'=>'required|in:1,2',
+            'photo'=>'required_without:id|mimes:jpg,jpeg,png',
+            'type'=>'required_without:id|in:1,2',
         ];
     }
 }
