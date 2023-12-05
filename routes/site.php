@@ -69,7 +69,6 @@ Route::group(
             
         });
         Route::get('/search', [SearchingComponent::class,'search'])->name('search');
-        Route::get('/ss', [Homepage::class,'latestProduct'])->name('search');
         
 
 
